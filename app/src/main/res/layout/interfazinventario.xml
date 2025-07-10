@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InterfazInventario">
+
+    <TextView
+        android:id="@+id/labelBuscar"
+        android:layout_width="178dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/open_sans_regular"
+        android:text="Código o Nombre del Producto:"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/labelOrdenar"
+        android:layout_width="177dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="224dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/open_sans_regular"
+        android:text="Ordenar por:"
+        android:textColor="#000000"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/campoBuscar"
+        android:layout_width="178dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="88dp"
+        android:background="@drawable/campo_buscar_background"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnBuscar"
+        android:layout_width="188dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="148dp"
+        android:backgroundTint="#AFFFF3"
+        android:drawableLeft="@mipmap/ic_ordenar_180_foreground"
+        android:fontFamily="@font/open_sans_regular"
+        android:paddingLeft="-21dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="9dp"
+        android:text="Buscar"
+        android:textColor="#000000"
+        android:textSize="26sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.035"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnOrdenar"
+        android:layout_width="185dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="148dp"
+        android:backgroundTint="#AFFFF3"
+        android:drawableLeft="@mipmap/ic_ordenar_foreground"
+        android:fontFamily="@font/open_sans_regular"
+        android:paddingLeft="-21dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="9dp"
+        android:text="Ordenar"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.949"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="4dp"
+        android:layout_height="188dp"
+        android:layout_marginStart="204dp"
+        android:layout_marginTop="32dp"
+        android:background="@color/black"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/labelError"
+        android:layout_width="178dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="220dp"
+        android:fontFamily="@font/open_sans_bold"
+        android:text="Producto no registrado en el inventario:"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TableLayout
+        android:id="@+id/tablaProductos"
+        android:layout_width="387dp"
+        android:layout_height="408dp"
+        android:layout_marginTop="268dp"
+        android:background="@drawable/table_background"
+        android:padding="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/headerCodigo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/casilla_background"
+                android:fontFamily="@font/open_sans_regular"
+                android:padding="4dp"
+                android:text="Código"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/headerNombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/casilla_background"
+                android:fontFamily="@font/open_sans_regular"
+                android:padding="4dp"
+                android:text="Nombre"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/headerCategoria"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/casilla_background"
+                android:fontFamily="@font/open_sans_regular"
+                android:padding="4dp"
+                android:text="Categoría"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/headerPrecio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/casilla_background"
+                android:fontFamily="@font/open_sans_regular"
+                android:padding="4dp"
+                android:text="Precio"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/headerPrecioC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/casilla_background"
+                android:fontFamily="@font/open_sans_regular"
+                android:paddingLeft="2dp"
+                android:paddingTop="4dp"
+                android:paddingRight="2dp"
+                android:paddingBottom="4dp"
+                android:text="Precio Com."
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/headerCantidad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/casilla_background"
+                android:fontFamily="@font/open_sans_regular"
+                android:padding="4dp"
+                android:text="Cantidad"
+                android:textColor="#000000" />
+        </TableRow>
+
+    </TableLayout>
+
+    <Spinner
+        android:id="@+id/SpinnerOrdenar"
+        android:layout_width="179dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
