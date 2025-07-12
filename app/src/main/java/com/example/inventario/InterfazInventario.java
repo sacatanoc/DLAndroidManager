@@ -17,8 +17,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.inventario.Producto;
-import Proyect.Model.Inventario;
+
 import java.util.ArrayList;
 
 public class InterfazInventario extends AppCompatActivity {
