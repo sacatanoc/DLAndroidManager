@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.inventario"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
@@ -32,7 +32,8 @@ android {
 }
 
 dependencies {
-
+    implementation("androidx.cardview:cardview:1.0.0")
+    implementation("com.airbnb.android:lottie:3.0.1")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
