@@ -8,6 +8,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -20,7 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.Calendar;
 import java.util.List;
 
-public class Compras extends AppCompatActivity {
+public class ComprasActivity extends AppCompatActivity {
 
     Button bfiltros,bnueva;
     private int dia;
@@ -89,11 +90,15 @@ public class Compras extends AppCompatActivity {
             }
         });
 
+        //Boton volver
+        ImageButton btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(v -> finish());
+
     }
 
     //Dialogo de Filtros
     void showDialogFiltros() {
-        final Dialog dialog = new Dialog(Compras.this);
+        final Dialog dialog = new Dialog(ComprasActivity.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(true);
         dialog.setContentView(R.layout.filtrosdialog);
@@ -114,7 +119,7 @@ public class Compras extends AppCompatActivity {
                 int ano = c.get(Calendar.YEAR);
 
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        Compras.this,
+                        ComprasActivity.this,
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -162,7 +167,7 @@ public class Compras extends AppCompatActivity {
                 }
 
                 if (!seEncontraronCoincidencias) {
-                    android.widget.Toast.makeText(Compras.this,
+                    android.widget.Toast.makeText(ComprasActivity.this,
                             "Producto no encontrado. Verifica el nombre, código o fecha.",
                             android.widget.Toast.LENGTH_LONG).show();
                 }
@@ -199,7 +204,7 @@ public class Compras extends AppCompatActivity {
     }
 
     void showDialogCompra() {
-        final Dialog dialog = new Dialog(Compras.this);
+        final Dialog dialog = new Dialog(ComprasActivity.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(true);
         dialog.setContentView(R.layout.ncompradialog);
@@ -221,7 +226,7 @@ public class Compras extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (idnombre.getText().toString().isEmpty() || cantidad.getText().toString().isEmpty()) {
-                    android.widget.Toast.makeText(Compras.this,
+                    android.widget.Toast.makeText(ComprasActivity.this,
                             "Por favor llena todos los campos.",
                             android.widget.Toast.LENGTH_LONG).show();
                 }
@@ -231,13 +236,13 @@ public class Compras extends AppCompatActivity {
                     try {
                         cant = Integer.parseInt(cantidad.getText().toString());
                         if (cant <= 0) {
-                            android.widget.Toast.makeText(Compras.this,
+                            android.widget.Toast.makeText(ComprasActivity.this,
                                     "La cantidad debe ser mayor que cero.",
                                     android.widget.Toast.LENGTH_LONG).show();
                                     return;
                         }
                     } catch (NumberFormatException e) {
-                        android.widget.Toast.makeText(Compras.this,
+                        android.widget.Toast.makeText(ComprasActivity.this,
                                 "La cantidad debe ser un numero entero valido.",
                                 android.widget.Toast.LENGTH_LONG).show();
                                 return;
@@ -275,13 +280,13 @@ public class Compras extends AppCompatActivity {
                         RecyclerView recyclerView = findViewById(R.id.recyclerViewCompras);
                         recyclerView.setAdapter(adapter);
                         //guardar compra
-                        Compra.guardarC(Compras.this);
+                        Compra.guardarC(ComprasActivity.this);
                         //Llamar al metodo de guardarProductos();
-                        android.widget.Toast.makeText(Compras.this,
+                        android.widget.Toast.makeText(ComprasActivity.this,
                                 "Compra registrada exitosamente.",
                                 android.widget.Toast.LENGTH_LONG).show();
                     } else {
-                        android.widget.Toast.makeText(Compras.this,
+                        android.widget.Toast.makeText(ComprasActivity.this,
                                 "Producto no encontrado.",
                                 android.widget.Toast.LENGTH_LONG).show();
                     }

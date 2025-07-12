@@ -80,5 +80,15 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Configuración - En desarrollo", Toast.LENGTH_SHORT).show();
             }
         });
+
+        CardView cardCompras = findViewById(R.id.cardFunc6);
+        cardConfig.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ComprasActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }
