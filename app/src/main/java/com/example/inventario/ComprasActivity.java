@@ -32,6 +32,7 @@ public class ComprasActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_compras);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_compras);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {

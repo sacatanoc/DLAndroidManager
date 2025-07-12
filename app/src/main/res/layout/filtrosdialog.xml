@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:text="Filtros"
         android:textSize="24sp"
-        android:textColor="@color/dark_primary_color"
+        android:textColor="@color/colorPrimaryDark"
         android:layout_marginBottom="16dp"/>
 
     <LinearLayout
@@ -63,7 +63,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/primary_color"
+            android:background="@color/colorPrimary"
             android:text="Filtrar"
             android:textColor="@color/white" />
 
@@ -76,7 +76,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/primary_color"
+            android:background="@color/colorPrimary"
             android:text="Limpiar Filtros"
             android:textColor="@color/white" />
     </LinearLayout>

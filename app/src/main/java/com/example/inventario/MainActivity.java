@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         CardView cardCompras = findViewById(R.id.cardFunc6);
-        cardConfig.setOnClickListener(new View.OnClickListener() {
+        cardCompras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ComprasActivity.class);
