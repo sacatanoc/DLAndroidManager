@@ -71,8 +71,11 @@ public class MainActivity extends AppCompatActivity {
 
         // Botón Compras
         setupButton(R.id.cardFunc6, () -> {
+            try {
             Intent intent = new Intent(this, ComprasActivity.class);
-            startActivity(intent);
+            startActivity(intent);} catch (Exception e) {
+                showError("Error al crear compras", e);
+            }
         });
     }
 
