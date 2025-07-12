@@ -32,8 +32,6 @@ android {
 }
 
 dependencies {
-    implementation("androidx.cardview:cardview:1.0.0")
-    implementation("com.airbnb.android:lottie:3.0.1")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
