@@ -1,8 +1,9 @@
 package com.example.inventario;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Inventario {
+public class Inventario implements Serializable {
 
     public static ArrayList<Producto> productos;
     public static Inventario instancia;

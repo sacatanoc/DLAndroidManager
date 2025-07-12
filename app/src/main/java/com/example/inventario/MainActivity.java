@@ -2,6 +2,7 @@ package com.example.inventario;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,27 +14,25 @@ import java.util.List;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setupCardButtons();
+    }
+
+    private void setupCardButtons() {
         // Botón Ruta
-        CardView cardRuta = findViewById(R.id.cardRuta);
-        cardRuta.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, RutaActivity.class);
-                startActivity(intent);
-            }
+        setupButton(R.id.cardRuta, () -> {
+            Intent intent = new Intent(this, RutaActivity.class);
+            startActivity(intent);
         });
 
         // Botón Facturación
-        CardView cardFacturacion = findViewById(R.id.cardFunc2);
-        cardFacturacion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Crear pedido de ejemplo con datos de prueba
+        setupButton(R.id.cardFunc2, () -> {
+            try {
                 Cliente cliente = new Cliente(
                         "Cliente Ejemplo",
                         "3106830641",
@@ -45,50 +44,51 @@ public class MainActivity extends AppCompatActivity {
                 productos.add(new Producto("Producto A", 2, 25000));
                 productos.add(new Producto("Producto B", 1, 50000));
 
-                String fecha = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
+                String fecha = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                        .format(new Date());
 
                 Pedido pedido = new Pedido(cliente, productos, fecha);
 
-                // Abrir FacturaActivity con el pedido
-                Intent intent = new Intent(MainActivity.this, FacturaActivity.class);
+                Intent intent = new Intent(this, FacturaActivity.class);
                 intent.putExtra("pedido", pedido);
                 startActivity(intent);
+            } catch (Exception e) {
+                showError("Error al crear factura", e);
             }
         });
 
-        // Otros botones (mantienen Toast temporal)
-        CardView cardClientes = findViewById(R.id.cardFunc3);
-        cardClientes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Clientes - En desarrollo", Toast.LENGTH_SHORT).show();
+        // Botón Clientes
+        setupButton(R.id.cardFunc3, () ->
+                Toast.makeText(this, "Clientes - En desarrollo", Toast.LENGTH_SHORT).show());
+
+        // Botón Reportes
+        setupButton(R.id.cardFunc4, () ->
+                Toast.makeText(this, "Reportes - En desarrollo", Toast.LENGTH_SHORT).show());
+
+        // Botón Configuración
+        setupButton(R.id.cardFunc5, () ->
+                Toast.makeText(this, "Configuración - En desarrollo", Toast.LENGTH_SHORT).show());
+
+        // Botón Compras
+        setupButton(R.id.cardFunc6, () -> {
+            Intent intent = new Intent(this, ComprasActivity.class);
+            startActivity(intent);
+        });
+    }
+
+    private void setupButton(int cardId, Runnable action) {
+        CardView card = findViewById(cardId);
+        card.setOnClickListener(v -> {
+            try {
+                action.run();
+            } catch (Exception e) {
+                showError("Error al abrir función", e);
             }
         });
+    }
 
-        CardView cardReportes = findViewById(R.id.cardFunc4);
-        cardReportes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Reportes - En desarrollo", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        CardView cardConfig = findViewById(R.id.cardFunc5);
-        cardConfig.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Configuración - En desarrollo", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        CardView cardCompras = findViewById(R.id.cardFunc6);
-        cardCompras.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ComprasActivity.class);
-                startActivity(intent);
-            }
-        });
-
+    private void showError(String message, Exception e) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        Log.e("MainActivity", message, e);
     }
 }
