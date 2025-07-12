@@ -16,7 +16,7 @@ public class Compra {
     public Compra(Producto producto, int cantidad){
         this.producto = producto;
         this.cantidad = cantidad;
-        this.total = (producto.precioC * cantidad);
+        this.total = (producto.getPrecioC() * cantidad);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         this.fecha = LocalDate.now().format(formatter);
         compras.add(0,this);
@@ -26,7 +26,7 @@ public class Compra {
     public Compra(Producto producto, int cantidad, String fecha) {
         this.producto = producto;
         this.cantidad = cantidad;
-        this.total = (producto.precioC * cantidad);
+        this.total = (producto.getPrecioC() * cantidad);
         this.fecha = fecha; // usar la que viene del archivo
         compras.add(0,this);
     }
@@ -39,7 +39,7 @@ public class Compra {
                 Compra c = Compra.compras.get(i);
                 salida.println(
                         c.producto.getCodigo() + "," +
-                                c.producto.precioC + "," +
+                                c.producto.getPrecioC() + "," +
                                 c.cantidad + "," +
                                 c.fecha + "," +
                                 c.total
@@ -69,7 +69,7 @@ public class Compra {
                 double total = Double.parseDouble(partes[4]);
 
                 Producto encontrado = null;
-                for (Producto p : Producto.inventario) {
+                for (Producto p : Inventario.productos) {
                     if (p.getCodigo() == codigo) {
                         encontrado = p;
                         break;

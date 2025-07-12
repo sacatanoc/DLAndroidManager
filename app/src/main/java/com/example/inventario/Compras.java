@@ -151,7 +151,7 @@ public class Compras extends AppCompatActivity {
                             int codigo = Integer.parseInt(textoFiltro);
                             coincideTexto = c.producto.getCodigo() == codigo;
                         } catch (NumberFormatException e) {
-                            coincideTexto = c.producto.nombre.toLowerCase().contains(textoFiltro);
+                            coincideTexto = c.producto.getNombre().toLowerCase().contains(textoFiltro);
                         }
                     }
 
@@ -245,15 +245,15 @@ public class Compras extends AppCompatActivity {
                     Producto encontrado = null;
                     try {
                         int codigoBuscado = Integer.parseInt(nombreCodigo); // evaluar si es código
-                        for (Producto p : Producto.inventario) {
+                        for (Producto p : Inventario.productos) {
                             if (p.getCodigo() == codigoBuscado) {
                                 encontrado = p;
                                 break;
                             }
                         }
                     } catch (NumberFormatException e) { // si no es número, buscar por nombre
-                        for (Producto p : Producto.inventario) {
-                            if (p.nombre.equalsIgnoreCase(nombreCodigo)) {
+                        for (Producto p : Inventario.productos) {
+                            if (p.getNombre().equalsIgnoreCase(nombreCodigo)) {
                                 encontrado = p;
                                 break;
                             }
@@ -261,11 +261,11 @@ public class Compras extends AppCompatActivity {
                     }
 
                     if (encontrado != null){
-                        encontrado.cantidad = encontrado.cantidad + cant;
+                        encontrado.setCantidad(encontrado.getCantidad() + cant);
                         TextView precioUnd = dialog.findViewById(R.id.pund);
-                        precioUnd.setText(Double.toString(encontrado.precioC));
+                        precioUnd.setText(Double.toString(encontrado.getPrecioC()));
                         TextView total = dialog.findViewById(R.id.ptotal);
-                        total.setText(Double.toString(encontrado.precioC*cant));
+                        total.setText(Double.toString(encontrado.getPrecioC()*cant));
                         // Registrar en lista de compras
                         Compra nueva = new Compra(encontrado, cant);
 

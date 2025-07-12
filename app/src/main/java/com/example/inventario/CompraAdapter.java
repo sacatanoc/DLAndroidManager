@@ -28,9 +28,9 @@ public class CompraAdapter extends RecyclerView.Adapter<CompraAdapter.CompraView
     public void onBindViewHolder(@NonNull CompraViewHolder holder, int position) {
         Compra compra = listaCompras.get(position);
         holder.txtCodigo.setText(String.valueOf(compra.producto.getCodigo()));
-        holder.txtNombre.setText(compra.producto.nombre);
+        holder.txtNombre.setText(compra.producto.getNombre());
         holder.txtCantidad.setText(String.valueOf(compra.cantidad));
-        holder.txtPrecio.setText(String.valueOf((int) compra.producto.precioC));
+        holder.txtPrecio.setText(String.valueOf((int) compra.producto.getPrecioC()));
         holder.txtFecha.setText(compra.fecha);
         holder.txtTotal.setText(String.valueOf((int) compra.total));
     }

@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
+import com.example.inventario.Inventario;
 
 import java.util.ArrayList;
 
@@ -75,16 +75,16 @@ public class InterfazInventario extends AppCompatActivity {
                     productosSorted.sort((a, b) -> Integer.compare(a.getCodigo(), b.getCodigo()));
                     break;
                 case "Nombre":
-                    productosSorted.sort((a, b) -> a.nombre.compareToIgnoreCase(b.nombre));
+                    productosSorted.sort((a, b) -> a.getNombre().compareToIgnoreCase(b.getNombre()));
                     break;
                 case "Categoría":
-                    productosSorted.sort((a, b) -> a.categoria.compareToIgnoreCase(b.categoria));
+                    productosSorted.sort((a, b) -> a.getCategoria().compareToIgnoreCase(b.getCategoria()));
                     break;
                 case "Precio":
-                    productosSorted.sort((a, b) -> Double.compare(a.precio, b.precio));
+                    productosSorted.sort((a, b) -> Double.compare(a.getPrecio(), b.getPrecio()));
                     break;
                 case "Cantidad":
-                    productosSorted.sort((a, b) -> Integer.compare(a.cantidad, b.cantidad));
+                    productosSorted.sort((a, b) -> Integer.compare(a.getCantidad(), b.getCantidad()));
                     break;
                 default:
                     break;
@@ -105,23 +105,23 @@ public class InterfazInventario extends AppCompatActivity {
                 tvCodigo.setPadding(4, 4, 4, 4);
 
                 TextView tvNombre = new TextView(this);
-                tvNombre.setText(String.valueOf(p.nombre));
+                tvNombre.setText(String.valueOf(p.getNombre()));
                 tvNombre.setPadding(4, 4, 4, 4);
 
                 TextView tvCategoria = new TextView(this);
-                tvCategoria.setText(String.valueOf(p.categoria));
+                tvCategoria.setText(String.valueOf(p.getCategoria()));
                 tvCategoria.setPadding(4, 4, 4, 4);
 
                 TextView tvPrecio = new TextView(this);
-                tvPrecio.setText(String.valueOf(p.precio));
+                tvPrecio.setText(String.valueOf(p.getPrecio()));
                 tvPrecio.setPadding(4, 4, 4, 4);
 
                 TextView tvPrecioC = new TextView(this);
-                tvPrecioC.setText(String.valueOf(p.precioC));
+                tvPrecioC.setText(String.valueOf(p.getPrecioC()));
                 tvPrecioC.setPadding(2, 4, 2, 4);
 
                 TextView tvCantidad = new TextView(this);
-                tvCantidad.setText(String.valueOf(p.cantidad));
+                tvCantidad.setText(String.valueOf(p.getCantidad()));
                 tvCantidad.setPadding(4, 4, 4, 4);
 
                 fila.addView(tvCodigo);
@@ -148,7 +148,7 @@ public class InterfazInventario extends AppCompatActivity {
                 }
             } catch (NumberFormatException e) { // si no es número, buscar por nombre
                 for (Producto p : Inventario.productos) {
-                    if (p.nombre.equalsIgnoreCase(NombreCodigo)) {
+                    if (p.getCategoria().equalsIgnoreCase(NombreCodigo)) {
                         encontrado = p;
                         break;
                     }
@@ -172,23 +172,23 @@ public class InterfazInventario extends AppCompatActivity {
                 tvCodigo.setPadding(4, 4, 4, 4);
 
                 TextView tvNombre = new TextView(this);
-                tvNombre.setText(String.valueOf(encontrado.nombre));
+                tvNombre.setText(String.valueOf(encontrado.getNombre()));
                 tvNombre.setPadding(4, 4, 4, 4);
 
                 TextView tvCategoria = new TextView(this);
-                tvCategoria.setText(String.valueOf(encontrado.categoria));
+                tvCategoria.setText(String.valueOf(encontrado.getCategoria()));
                 tvCategoria.setPadding(4, 4, 4, 4);
 
                 TextView tvPrecio = new TextView(this);
-                tvPrecio.setText(String.valueOf(encontrado.precio));
+                tvPrecio.setText(String.valueOf(encontrado.getPrecio()));
                 tvPrecio.setPadding(4, 4, 4, 4);
 
                 TextView tvPrecioC = new TextView(this);
-                tvPrecioC.setText(String.valueOf(encontrado.precioC));
+                tvPrecioC.setText(String.valueOf(encontrado.getPrecioC()));
                 tvPrecioC.setPadding(2, 4, 2, 4);
 
                 TextView tvCantidad = new TextView(this);
-                tvCantidad.setText(String.valueOf(encontrado.cantidad));
+                tvCantidad.setText(String.valueOf(encontrado.getCantidad()));
                 tvCantidad.setPadding(4, 4, 4, 4);
 
                 fila.addView(tvCodigo);
